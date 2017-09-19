@@ -19,10 +19,10 @@ public class TransferFarmInfo {
 	
 	private TransferFarmInfo() {	}
 	/**
-	 * a열 조사 구분코드 examinCd
-	 * b열 조사 지역명 areaName
-	 * c열 조사 품목코드 prdlstCd
-	 * d열 조사 품목명 prdlstName
+	 * a열 조사 구분코드 examinCd api
+	 * b열 조사 지역명 areaName 검색
+	 * c열 조사 품목코드 prdlstCd	api
+	 * d열 조사 품목명 prdlstName 검색
 	 * @return 성공적으로 값을 넣을경우 true 그렇지않을경우 false
 	 */
 	public boolean addFarmInfo() {
@@ -31,7 +31,7 @@ public class TransferFarmInfo {
 		ResultSet rs = null;
 		HashMap<String, String> farmlist = new HashMap<>();
 		farmlist=util.loadFarmInfo();
-		String sql ="INSERT INTO farmlist VALUES (?,?,?,?)";
+		String sql ="INSERT INTO farmlist VALUES (?,?,?,?,?)";
 		try {
 			conn = factory.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -42,11 +42,12 @@ public class TransferFarmInfo {
 			 * 조사 품목코드 prdlstCd+[index]
 			 * 조사 품목명 prdlstName+[index]
 			 */
-			for (int i = 0; i < farmlist.size(); i++) {
-				pstmt.setString(1, farmlist.get("examinCd["+i+"]"));
-				pstmt.setString(2, farmlist.get("areaName["+i+"]"));
-				pstmt.setString(3, farmlist.get("prdlstCd["+i+"]"));
-				pstmt.setString(4, farmlist.get("prdlstName["+i+"]"));
+			for (int i = 0; i < farmlist.size()/4; i++) {				
+				pstmt.setInt(1,i);
+				pstmt.setString(2, farmlist.get("examinCd["+i+"]"));
+				pstmt.setString(3, farmlist.get("areaName["+i+"]"));
+				pstmt.setString(4, farmlist.get("prdlstCd["+i+"]"));
+				pstmt.setString(5, farmlist.get("prdlstName["+i+"]"));
 				pstmt.executeUpdate();
 			}
 			System.out.println(farmlist.size());
