@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+	<link type="text/css" rel="stylesheet" href="test.css">
+</head>
+<body>
+
+	
+	<script src="Highcharts/code/jquery-3.2.1.min.js"></script>
+	<script src="Highcharts/code/highcharts.js"></script>
+	<script src="Highcharts/code/modules/exporting.js"></script>
+	
+	<div id="container"></div>
+
+	<script>
+		Highcharts.chart('container', {	// Highcharts를 사용한다는 선언, id가 container인 div에 만들겠다
+	
+	    title: {	// 제목
+	        text: '2017년 매출 통계'
+	    },
+	
+	    subtitle: {	// 부제목
+	        text: 'OOOO 판매자 님'
+	    },
+	
+	    yAxis: {		// y축
+	        title: {
+	            text: '금액(1000원)'
+	        }
+	    },
+	    legend: {	// 범례
+	        layout: 'vertical',
+	        align: 'right',
+	        verticalAlign: 'middle'
+	    },
+	
+	    plotOptions: {	// 시작점
+	        series: {
+	            pointStart: 1
+	        }
+	    },
+	
+	    series: [{	// 실 데이터
+	        name: '감자',
+	        data: [800, 1100, 900, 1234, 600, 566, 800, 999, 123, 456, 789, 159]
+	    }, {
+	        name: '오이',
+	        data: [800, 1100, 900, 1234, 600, 566, 800, 999, 123, 456, 789, 159]
+	    }, {
+	        name: '배추',
+	        data: [800, 1100, 900, 1234, 600, 566, 800, 999, 123, 456, 789, 159]
+	    }, {
+	        name: '고추',
+	        data: [800, 1100, 900, 1234, 600, 566, 800, 999, 123, 456, 789, 159]
+	    }, {
+	        name: '상추',
+	        data: [800, 1100, 900, 1234, 600, 566, 800, 999, 123, 456, 789, 159]
+	    }],
+	
+	    responsive: {		// 다양한 화면 또는 차트 크기에 적용 할 규칙 집합
+	        rules: [{		// 반응 설정을위한 일련의 규칙. 규칙은 위에서 아래로 실행
+	            condition: {
+	                maxWidth: 500
+	            },
+	            chartOptions: { // 일반 차트 옵션에 재정의로 적용 할 전체 차트 옵션 집합
+	                legend: {
+	                    layout: 'horizontal',
+	                    align: 'center',
+	                    verticalAlign: 'bottom'
+	                }
+	            }
+	        }]
+	    }
+	
+	});
+	</script>
+
+</body>
+</html>
