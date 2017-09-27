@@ -15,8 +15,8 @@ public class MailTransfer {
  public static void main(String[] args) {
 
   String host     = "smtp.naver.com";
-  final String user   = "xdkyu";
-  final String password  = "dmsrb1234";
+  final String user   = "";
+  final String password  = "";
 
   String to     = "xdkyu01@gmail.com";
 
